@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>HTML5 Canvas Winning Wheel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <script type="text/javascript" src="Winwheel.js"></script>
+    <script src="TweenMax.min.js"></script>
+  </head>
+  <body>
+    <div class="cash">
+      <div>Cash</div>
+      <div class="your-cash">
+        <span>Dem </span>
+        <span id="cash">0</span>
+      </div>
+    </div>
+    <div class="container" align="center">
+      <div class="content">
+        <canvas
+          id="canvas1"
+          width="175"
+          height="175"
+          style="position: absolute; z-index: 3;"
+        >
+          Sorry, your browser doesn't support canvas. Please try another.
+        </canvas>
+        <canvas
+          id="canvas2"
+          width="255"
+          height="255"
+          style="position: absolute; z-index: 2;"
+        >
+          Sorry, your browser doesn't support canvas. Please try another.
+        </canvas>
+        <canvas
+          id="canvas3"
+          width="325"
+          height="325"
+          style="position: absolute;"
+        >
+          Sorry, your browser doesn't support canvas. Please try another.
+        </canvas>
+        <div class="img-center">
+          <img class="img1" src="./images/center.png" onClick="startSpin();" />
+          <img class="img2" src="./images/pointer.png" />
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="group-input">
+        <button class="btn sub" onclick="subBet();">-</button>
+        <div class="your-bet">
+          <div>Your Bet</div>
+          <div class="value-bet">
+            <span>Dem</span>
+            <span id="value">10</span>
+          </div>
+        </div>
+        <button class="btn plus" onclick="plusBet();">+</button>
+      </div>
+    </div>
+    <script type="text/javascript" src="hardResult.js"></script>
+    <script type="text/javascript" src="helper.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
