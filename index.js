@@ -1,5 +1,6 @@
 let wheelSpinning = false;
 let currentStep = 0;
+let indexHardResult = 0;
 const common = {
   textFontSize: 13,
   textMargin: 0,
@@ -118,7 +119,7 @@ function getWheelList(configs) {
     });
 
     function stopAngle() {
-      const indexHardResult = HARD_RESULT[currentStep];
+      const indexHardResult = HARD_RESULT[indexHardResult][currentStep];
       const start = _segments[indexHardResult - 1]?.stopValue
         ? _segments[indexHardResult - 1]?.stopValue + 1
         : 0;
@@ -137,7 +138,7 @@ function resetAll() {
   wheelList.map(({ theWheel }) => {
     const { rotationAngle } = configs[currentStep];
 
-    theWheel.canvas.classList.remove('active')
+    theWheel.canvas.classList.remove("active");
     theWheel.stopAnimation(false);
     theWheel.rotationAngle = rotationAngle % 360;
     theWheel.draw();
@@ -152,18 +153,25 @@ function callbackFinished(indicatedSegment) {
     const valueSuccess = getYourBet() * indicatedSegment.value;
     setYourCash(valueSuccess + getYourCash());
     alert("Chúc mừng bạn trúng: " + valueSuccess);
+    // set next hardResult
+    indexHardResult++;
+    indexHardResult = indexHardResult % HARD_RESULT.length;
+    // reset currentStep
+    currentStep = 0;
     resetAll();
     return;
   }
   resetWheel();
   currentStep++;
   currentStep = currentStep % configs.length;
+  // set next hardResult when finish cycle
+  indexHardResult += currentStep === 0 ? 1 : 0;
 }
 
 function startSpin() {
   if (wheelSpinning === false) {
     const { stopAngle, theWheel } = wheelList[currentStep];
-    theWheel.canvas.classList.add('active');
+    theWheel.canvas.classList.add("active");
     stopAngle();
     theWheel.startAnimation();
     wheelSpinning = true;
