@@ -412,7 +412,7 @@ Winwheel.prototype.drawPins = function () {
     let _pinSpacing = 0;
     const hasConfigSize = this.segments.some((seg) => seg?.size);
     for (let i = 1; i <= this.pins.number; i++) {
-        // customs
+        // customs render when segment apply size
       if (hasConfigSize) {
         _pinSpacing = this.segments[i].startAngle;
       } else {
