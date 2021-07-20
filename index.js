@@ -119,11 +119,11 @@ function getWheelList(configs) {
     });
 
     function stopAngle() {
-      const indexHardResult = HARD_RESULT[indexHardResult][currentStep];
-      const start = _segments[indexHardResult - 1]?.stopValue
-        ? _segments[indexHardResult - 1]?.stopValue + 1
+      const iHardResult = HARD_RESULT[indexHardResult][currentStep];
+      const start = _segments[iHardResult - 1]?.stopValue
+        ? _segments[iHardResult - 1]?.stopValue + 1
         : 0;
-      const stop = _segments[indexHardResult].stopValue;
+      const stop = _segments[iHardResult].stopValue;
       const stopAt = Math.random() * (stop - start) + start;
       theWheel.animation.stopAngle = stopAt;
     }
